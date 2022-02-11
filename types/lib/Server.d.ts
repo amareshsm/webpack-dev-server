@@ -832,6 +832,12 @@ declare class Server {
         description: string;
         simpleType: string;
         multiple: boolean;
+        /**
+         * prependEntry Method for webpack 4
+         * @param {any} originalEntry
+         * @param {any} newAdditionalEntries
+         * @returns {any}
+         */
       };
       ipc: {
         configs: (
@@ -862,9 +868,11 @@ declare class Server {
           path: string;
         }[];
         description: string;
+        /** @type {any} */
         simpleType: string;
         multiple: boolean;
       };
+      /** @type {any} */
       "magic-html": {
         configs: {
           type: string;
@@ -881,9 +889,9 @@ declare class Server {
         configs: (
           | {
               type: string;
-              /** @type {MultiCompiler} */ multiple: boolean;
+              multiple: boolean;
               description: string;
-              path: string;
+              /** @type {MultiCompiler} */ path: string;
             }
           | {
               type: string;
@@ -1131,7 +1139,7 @@ declare class Server {
           description: string;
           negatedDescription: string;
           multiple: boolean;
-          /** @type {ServerOptions} */ path: string;
+          path: string;
           type: string;
         }[];
         description: string;
@@ -1154,7 +1162,7 @@ declare class Server {
         configs: (
           | {
               type: string;
-              multiple: boolean;
+              /** @type {ServerOptions} */ multiple: boolean;
               description: string;
               path: string;
             }
@@ -1179,7 +1187,7 @@ declare class Server {
         }[];
         description: string;
         simpleType: string;
-        multiple: boolean;
+        multiple: boolean /** @type {ServerOptions} */;
       };
       "static-public-path": {
         configs: {
@@ -1300,7 +1308,7 @@ declare class Server {
           | {
               description: string;
               multiple: boolean;
-              /** @type {ServerOptions} */ path: string;
+              path: string;
               type: string;
             }
         )[];
@@ -2261,12 +2269,6 @@ declare class Server {
                               minLength: number;
                             };
                             minItems: number;
-                            /**
-                             * prependEntry Method for webpack 4
-                             * @param {any} originalEntry
-                             * @param {any} newAdditionalEntries
-                             * @returns {any}
-                             */
                             minLength?: undefined;
                           }
                         | {
@@ -2341,6 +2343,7 @@ declare class Server {
               items?: undefined;
             }
           | {
+              /** @type {any} */
               type: string;
               items: {
                 anyOf: (
@@ -2403,10 +2406,6 @@ declare class Server {
           passphrase: {
             type: string;
             description: string;
-            /**
-             * @private
-             * @returns {Promise<void>}
-             */
           };
           requestCert: {
             type: string;
@@ -2798,8 +2797,8 @@ declare class Server {
         anyOf: {
           $ref: string;
         }[];
-        description: string;
-        /** @type {Array<keyof ServerOptions>} */ link: string;
+        /** @type {ServerOptions} */ description: string;
+        link: string;
       };
       WebSocketServerType: {
         enum: string[];
@@ -2843,7 +2842,15 @@ declare class Server {
           };
         };
         additionalProperties: boolean;
+        /**
+         * @param {string | Buffer | undefined} item
+         * @returns {string | Buffer | undefined}
+         */
       };
+      /**
+       * @param {string | Buffer | undefined} item
+       * @returns {string | Buffer | undefined}
+       */
       WebSocketServerString: {
         type: string;
         minLength: number;
@@ -2857,7 +2864,6 @@ declare class Server {
       bonjour: {
         $ref: string;
       };
-      /** @type {any} */
       client: {
         $ref: string;
       };
@@ -2874,7 +2880,7 @@ declare class Server {
         $ref: string;
       };
       host: {
-        $ref: string;
+        $ref: string /** @type {any} */;
       };
       hot: {
         $ref: string;
